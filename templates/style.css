@@ -2,7 +2,27 @@
     font-family: 'Pacifico', cursive;
     width:500px;
     padding : 40px;
-    margin: auto;
+    margin: 0 auto;
+    text-align: center;
+}
+.weather {
+    display: inline-block;
+    margin: 0 5px;
+    float: right;
+}
+
+.weather_seoul {
+    float: left;
+    margin:10px;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
+}
+
+.weather_tokyo {
+    float: left;
+    margin: 10px;
+    text-align: center;
+    font-family: 'Pacifico', cursive;
 }
 
 .carousel-inner > .carousel-item > img{
