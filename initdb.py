@@ -24,9 +24,10 @@ def insert_tour():
         price = tour.select_one('div > a > div.act_title > div > span.act_price').text.split('₩', 1)[1].strip()
         doc = {'title': title,
                'image': image_split1,
-               'price': price}
+               'price': price,
+               'like': 0}
 
-        db.tours.insert_one(doc)
+        db.tour.insert_one(doc)
 
 
 insert_tour()
