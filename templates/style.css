@@ -1,28 +1,28 @@
-.title {
+.header {
+    display : flex;
     font-family: 'Pacifico', cursive;
+}
+
+.title {
     width:500px;
     padding : 40px;
     margin: 0 auto;
     text-align: center;
 }
 .weather {
-    display: inline-block;
-    margin: 0 5px;
+    display: flex;
+    margin: 20px;
     float: right;
 }
 
 .weather_seoul {
-    float: left;
-    margin:10px;
     text-align: center;
-    font-family: 'Pacifico', cursive;
+    margin: 10px
 }
 
 .weather_tokyo {
-    float: left;
-    margin: 10px;
     text-align: center;
-    font-family: 'Pacifico', cursive;
+    margin: 10px
 }
 
 .carousel-inner > .carousel-item > img{
