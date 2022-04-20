@@ -1,14 +1,148 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-첫페이지
 
-브랜치 테스트
-123
-456
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+
+
+    <title>🪂CONNECTED</title>
+
+
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Pacifico&display=swap" rel="stylesheet">
+
+    <script>
+        $('.carousel').carousel({interval: 2000})
+    </script>
+
+</head>
+
+
+
+<body>
+    <h1 class="title">🪂 CONNECTED</h1>
+
+    <div id="main-img" class="carousel-slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <!-- 슬라이드 쇼 -->
+            <div class="carousel-item active">
+                <!--가로-->
+                <img class="d-block w-100"
+                     src="https://images2.alphacoders.com/592/thumb-1920-592195.jpg"
+                     alt="First slide">
+<!--                <div class="carousel-caption d-none d-md-block">-->
+<!--                    <h5>TEST</h5>-->
+<!--                    <p>testtesttest</p>-->
+<!--                </div>-->
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100"
+                     src="https://images.alphacoders.com/674/thumb-1920-674925.png"
+                     alt="Second slide"></div>
+            <div class="carousel-item">
+                <img class="d-block w-100"
+                     src="https://images2.alphacoders.com/546/thumb-1920-546391.jpg"
+                     alt="Third slide">
+            </div>
+            <!-- / 슬라이드 쇼 끝 -->
+            <!-- 인디케이터 -->
+            <ul class="carousel-indicators">
+                <li data-target="#main-img" data-slide-to="0" class="active"></li> <!--0번부터시작-->
+                <li data-target="#main-img" data-slide-to="1"></li>
+                <li data-target="#main-img" data-slide-to="2"></li>
+            </ul> <!-- 인디케이터 끝 --> </div>
+    </div>
+
+
+    <div class="wrap">
+        <div class="filter-bar">
+            <ul class="filter-left">
+
+
+                <div class="btn-group">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        여행할 도시 선택
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">파리</a></li>
+                        <li><a class="dropdown-item" href="#">런던</a></li>
+                        <li><a class="dropdown-item" href="#">방콕</a></li>
+                        <li><a class="dropdown-item" href="#">로마</a></li>
+                        <li><a class="dropdown-item" href="#">프라하</a></li>
+                        <li><a class="dropdown-item" href="#">바르셀로나</a></li>
+                        <li><a class="dropdown-item" href="#">뉴욕</a></li>
+                        <li><a class="dropdown-item" href="#">서울</a></li>
+                        <li><a class="dropdown-item" href="#">라스베가스</a></li>
+                        <li><a class="dropdown-item" href="#">마드리드</a></li>
+                        <li><a class="dropdown-item" href="#">멜버른</a></li>
+                        <li><a class="dropdown-item" href="#">로스엔젤레스</a></li>
+                        <li><a class="dropdown-item" href="#">피렌체</a></li>
+                        <li><a class="dropdown-item" href="#">제주도</a></li>
+                        <li><a class="dropdown-item" href="#">하와이</a></li>
+                        <li><a class="dropdown-item" href="#">발리</a></li>
+                        <li><a class="dropdown-item" href="#">비엔나</a></li>
+                        <li><a class="dropdown-item" href="#">부다페스트</a></li>
+                        <li><a class="dropdown-item" href="#">다낭</a></li>
+                        <li><a class="dropdown-item" href="#">베이징</a></li>
+                    </ul>
+                </div>
+
+            </ul>
+            <ul class="filter-right">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">좋아요순</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">낮은 가격순</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">높은 가격순</a>
+                    </li>
+                </ul>
+            </ul>
+        </div>
+        <div class="card-list">
+            <div class="card">
+                <img class="card-img-top"
+                     src="http://image.ajunews.com//content/image/2020/10/18/20201018211753966706.jpg"
+                     alt="Card image cap">
+                <div class="tour-card-body">
+                    <p class="tour-area">카테고리, 여행지</p>
+                    <h5 class="tour-title">투어 이름</h5>
+                    <p class="tour-agency">여행사</p>
+                    <p class="tour-price">가격</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h2>🪂CONNECTED</h2>
+        <p>Code Travelers</p>
+    </div>
+
+
+
 </body>
 </html>
+
+
