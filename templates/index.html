@@ -20,6 +20,9 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
+    <!-- 날씨 API -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/133b431d39.js" crossorigin="anonymous"></script>
 
 
     <title>🪂CONNECTED</title>
@@ -32,12 +35,79 @@
         $('.carousel').carousel({interval: 2000})
     </script>
 
+    <!-- 날씨 API -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            let weatherIcon = {
+                '01': 'fa-solid fa-sun',
+                '02': 'fas fa-cloud-sun',
+                '03': 'fas fa-cloud',
+                '04': 'fas fa-cloud-meatball',
+                '09': 'fas fa-cloud-sun-rain',
+                '10': 'fas fa-cloud-showers-heavy',
+                '11': 'fas fa-poo-storm',
+                '13': 'far fa-snowflake',
+                '50': 'fas fa-smog'
+            };
+            $.ajax({
+                url: 'http://api.openweathermap.org/data/2.5/weather?q=SEOUL&appid=f8a889d8ef48d18452e82cbb13717423&units=metric',
+                dataType: 'json',
+                type: 'GET',
+                success: function (data) {
+                    var $Icon = (data.weather[0].icon).substr(0, 2);
+                    var $Temp = Math.floor(data.main.temp) + 'º';
+                    var $city = data.name;
+                    $('.CurrIcon1').append('<i class="' + weatherIcon[$Icon] + '"></i>');
+                    $('.CurrTemp1').prepend($Temp);
+                    $('.City1').append($city);
+                }
+            })
+            $.ajax({
+                url: 'http://api.openweathermap.org/data/2.5/weather?q=TOKYO&appid=f8a889d8ef48d18452e82cbb13717423&units=metric',
+                dataType: 'json',
+                type: 'GET',
+                success: function (data) {
+                    var $Icon = (data.weather[0].icon).substr(0, 2);
+                    var $Temp = Math.floor(data.main.temp) + 'º';
+                    var $city = data.name;
+                    $('.CurrIcon2').append('<i class="' + weatherIcon[$Icon] + '"></i>');
+                    $('.CurrTemp2').prepend($Temp);
+                    $('.City2').append($city);
+                }
+            })
+        });
+        function likePlace(name) {
+            $.ajax({
+                type: 'POST',
+                url: '/api/like',
+                data: {place_give: name},
+                success: function (response) {
+                    alert(response['msg']);
+                    window.location.reload()
+                }
+            });
+        }
+    </script>
 </head>
 
-
-
 <body>
-    <h1 class="title">🪂 CONNECTED</h1>
+    <div class="header">
+        <h1 class="title">🪂 CONNECTED</h1>
+        <!-- 날씨 API -->
+        <div class="weather">
+            <div class="weather_seoul">
+                <div class="CurrIcon1"></div>
+                <div class="CurrTemp1"></div>
+                <div class="City1"></div>
+            </div>
+            <div class="weather_tokyo">
+                <div class="CurrIcon2"></div>
+                <div class="CurrTemp2"></div>
+                <div class="City2"></div>
+            </div>
+        </div>
+    </div>
+
 
     <div id="main-img" class="carousel-slide" data-ride="carousel">
         <div class="carousel-inner">
