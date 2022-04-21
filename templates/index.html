@@ -71,11 +71,11 @@
 
                                             </div>
                                             <footer class="card-footer">
-                                                <span class="icon">
+                                                <span class="icon" onclick="likeTour('${title}')">
                                                      <i class="fa fa-heart-o"></i>
                                                 </span>
                                                 <p class="tour-like">${like}</p>
-                                                <a href="#" onclick="likeTour('${title}')" class="card-footer-item has-text-info"></a>
+                                                <a href="#" class="card-footer-item has-text-info"></a>
                                             </footer>
                                          </div>`
                         $('.card-list').append(temp_html)
@@ -118,6 +118,40 @@
                                         </span>
                                         <p class="tour-like">${like}</p>
                                         <a href="#" onclick="likeTour('${title}')" class="card-footer-item has-text-info"></a>
+                                    </footer>
+                                 </div>`
+                $('.card-list').append(temp_html)
+            }
+        }
+    </script>
+
+    <!-- 좋아요순 정렬 -->
+    <script>
+        function getListByLike(){
+            console.log('실행')
+            $('.card-list').empty()
+
+            let getListByLike = list.sort(function (a, b) {
+                return b.like - a.like
+            })
+
+            for (let i = 0; i < getListByLike.length; i++) {
+                let title = getListByLike[i]['title']
+                let image = getListByLike[i]['image']
+                let price = getListByLike[i]['price'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                let like = getListByLike[i]['like']
+
+                let temp_html = `<div class="card">
+                                    <img class="card-img-top" src="${image}" alt="Card image cap">
+                                    <div class="tour-card-body">
+                                        <h5 class="tour-title">${title}</h5>
+                                        <p class="tour-price">${price}원</p>
+                                    </div>
+                                    <footer class="card-footer">
+                                        <span class="icon" onclick="likeTour('${title}')">
+                                            <i class="fa fa-heart-o"></i>
+                                        </span>
+                                        <p class="tour-like">${like}</p>
                                     </footer>
                                  </div>`
                 $('.card-list').append(temp_html)
