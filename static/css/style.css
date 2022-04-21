@@ -91,7 +91,7 @@
 .card {
     border-radius: 10px;
     width : 300px;
-    height : 350px;
+    height : 308px;
 
     margin : 30px 30px 30px 30px;
 
@@ -99,10 +99,16 @@
 .tour-card-body {
     padding: 10px;
 }
-.tour-area {
-    color : gray;
-    font-size: 15px;
+.card-footer {
+    padding: 5px 20px 0px 20px;
+
+    vertical-align: middle;
+    display: flex;
 }
+.icon {
+    margin: 0px 10px 0px 0px;
+}
+
 .tour-title {
     width: 280px;
     text-overflow: ellipsis;
@@ -110,10 +116,6 @@
     overflow: hidden;
     display: block;
     font-weight: bold;
-}
-.tour-agency {
-    color : gray;
-    font-size: 15px;
 }
 
 .footer {
