@@ -71,13 +71,11 @@
 
                                             </div>
                                             <footer class="card-footer">
-                                            <span class="icon">
+                                                <span class="icon">
                                                      <i class="fa fa-heart-o"></i>
-                                                     </span>
+                                                </span>
                                                 <p class="tour-like">${like}</p>
-                                                <a href="#" onclick="likeTour('${title}')" class="card-footer-item has-text-info">
-
-                                                </a>
+                                                <a href="#" onclick="likeTour('${title}')" class="card-footer-item has-text-info"></a>
                                             </footer>
                                          </div>`
                         $('.card-list').append(temp_html)
@@ -93,7 +91,6 @@
             if (keyValue == 1) {
                 sortedList = list.sort(function (a, b) {
                     return a.price - b.price; // [2, 4, 11, 33] (오름차순)
-
                 })
             }else if(keyValue == 2){
                 sortedList = list.sort(function (a, b) {
@@ -116,15 +113,14 @@
                                         <p class="tour-price">${price}원</p>
                                     </div>
                                     <footer class="card-footer">
-                                              <p class="tour-like">좋아요:${like}</p>
-                                              <a href="#" onclick="likeTour('${title}')" class="card-footer-item has-text-info">
-                                                  <span class="icon">
-                                                    <i class="fa fa-heart-o"> Like</i>
-                                                  </span>
-                                              </a>
+                                        <p class="tour-like">좋아요:${like}</p>
+                                        <a href="#" onclick="likeTour('${title}')" class="card-footer-item has-text-info">
+                                            <span class="icon">
+                                                <i class="fa fa-heart-o"> Like</i>
+                                            </span>
+                                        </a>
                                     </footer>
-                                    </div>
-                                 </div>`
+                                    </div>`
                 $('.card-list').append(temp_html)
             }
         }
