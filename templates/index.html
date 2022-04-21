@@ -27,8 +27,55 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Pacifico&display=swap" rel="stylesheet">
 
+<!--    <script>-->
+<!--        $('.carousel').carousel({interval: 2000})-->
+<!--    </script>-->
+
     <script>
-        $('.carousel').carousel({interval: 2000})
+        let list = null
+        $(document).ready(function () {
+
+            getAllList();
+        });
+
+
+        let regex = /[^0-9]/g
+
+        function getAllList() {
+            console.log('실행')
+            $('.card-list').empty()
+            $.ajax({
+                type: "GET",
+                url: "/allList",
+                data: {},
+                success: function (response) {
+                    list = response['all_list']
+                    console.log(list)
+                    for (let i = 0; i < list.length; i++){
+                        let title = list[i]['title']
+                        let image = list[i]['image']
+                        let price = list[i]['price']
+                        let like = list[i]['like']
+
+                        list[i]['price'] = price.replace(regex,"")
+
+                        // console.log(list[i]['price'])
+
+                        let temp_html = `<div class="card">
+                                            <img class="card-img-top"
+                                                 src="${image}"
+                                                 alt="Card image cap">
+                                            <div class="tour-card-body">
+                                                <h5 class="tour-title">${title}</h5>
+                                                <p class="tour-agency">여행사</p>
+                                                <p class="tour-price">${price}원</p>
+                                            </div>
+                                        </div>`
+                        $('.card-list').append(temp_html)
+                    }
+                }
+            })
+        }
     </script>
 
     <!-- 날씨 API -->
