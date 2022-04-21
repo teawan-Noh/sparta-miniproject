@@ -60,7 +60,15 @@
                                             <div class="tour-card-body">
                                                 <h5 class="tour-title">${title}</h5>
                                                 <p class="tour-price">${price}원</p>
+                                                <p class="tour-like">좋아요:${like}</p>
                                             </div>
+                                            <footer class="card-footer">
+                                                <a href="#" onclick="likeTour('{title}')" class="card-footer-item has-text-info">
+                                                    <span class="icon">
+                                                     <i class="fa fa-heart-o"> Like</i>
+                                                     </span>
+                                                </a>
+                                            </footer>
                                          </div>`
                         $('.card-list').append(temp_html)
                     }
@@ -86,7 +94,15 @@
                                     <div class="tour-card-body">
                                         <h5 class="tour-title">${title}</h5>
                                         <p class="tour-price">${price}원</p>
+                                        <p class="tour-like">좋아요:${like}</p>
                                     </div>
+                                    <footer class="card-footer">
+                                          <a href="#" onclick="likeTour('{title}')" class="card-footer-item has-text-info">
+                                              <span class="icon">
+                                                <i class="fa fa-heart-o"> Like</i>
+                                              </span>
+                                          </a>
+                                    </footer>
                                  </div>`
                 $('.card-list').append(temp_html)
             }
@@ -109,6 +125,15 @@
                                     <div class="tour-card-body">
                                         <h5 class="tour-title">${title}</h5>
                                         <p class="tour-price">${price}원</p>
+                                        <p class="tour-like">좋아요:${like}</p>
+                                    </div>
+                                    <footer class="card-footer">
+                                          <a href="#" onclick="likeTour('{title}')" class="card-footer-item has-text-info">
+                                              <span class="icon">
+                                                <i class="fa fa-heart-o"> Like</i>
+                                              </span>
+                                          </a>
+                                    </footer>
                                     </div>
                                  </div>`
                 $('.card-list').append(temp_html)
@@ -158,20 +183,21 @@
                 }
             })
         });
+    </script>
 
-        function likePlace(name) {
+    <!-- 좋아요 구현 -->
+    <script>
+        function likeTour(title) {
             $.ajax({
                 type: 'POST',
                 url: '/api/like',
-                data: {place_give: name},
+                data: {title_give: title},
                 success: function (response) {
                     alert(response['msg']);
-                    window.location.reload()
                 }
             });
         }
     </script>
-
 </head>
 
 <body>
