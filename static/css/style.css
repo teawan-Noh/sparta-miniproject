@@ -47,11 +47,12 @@
 .filter-bar {
     display: flex;
     justify-content: space-between;
-    margin: 0 -2px;
+    margin: 10px 30px;
     padding: 5px 0;
 }
 .filter-left {
     justify-content: flex-start;
+    margin: 0px 0px 0px -10px;
 }
 .btn-group {
     background-color: yellowgreen;
@@ -59,6 +60,7 @@
 
 .filter-right {
     justify-content: flex-end;
+    margin: 0px 25px 0px 0px;
 
 }
 .btn-filter {
@@ -82,8 +84,8 @@
 
 
 .card-list{
-    margin: 10px;
-    padding : 30px;
+    margin: 5px;
+    padding : 10px;
     justify-content: space-around;
     display: flex;
     flex-wrap: wrap;
