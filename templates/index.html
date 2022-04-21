@@ -71,11 +71,11 @@
 
                                             </div>
                                             <footer class="card-footer">
-                                                <span class="icon">
+                                                <span class="icon" onclick="likeTour('${title}')">
                                                      <i class="fa fa-heart-o"></i>
                                                 </span>
                                                 <p class="tour-like">${like}</p>
-                                                <a href="#" onclick="likeTour('${title}')" class="card-footer-item has-text-info"></a>
+                                                <a href="#"  class="card-footer-item has-text-info"></a>
                                             </footer>
                                          </div>`
                         $('.card-list').append(temp_html)
@@ -124,6 +124,7 @@
             }
         }
     </script>
+
 
     <!-- 날씨 API -->
     <script type="text/javascript">
