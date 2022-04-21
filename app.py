@@ -18,6 +18,7 @@ def list_all():
 
     return jsonify({'all_list':all_list})
 
+@app.route('/api/like', methods=['POST'])
 def like_tour():
     title_receive = request.form['title_give']
     target_tour = db.tour.find_one({'title': title_receive})
