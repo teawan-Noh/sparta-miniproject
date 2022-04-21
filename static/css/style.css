@@ -54,8 +54,32 @@
     justify-content: flex-end;
 
 }
+.btn-filter {
+    background-color: cornflowerblue;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-filter:hover {
+    opacity: 1
+}
+
+
 .card-list{
+    margin: 30px;
+    padding : 30px;
+    justify-content: space-around;
     display: flex;
+    flex-wrap: wrap;
 }
 .card {
     border-radius: 10px;
