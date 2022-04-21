@@ -113,14 +113,13 @@
                                         <p class="tour-price">${price}원</p>
                                     </div>
                                     <footer class="card-footer">
-                                        <p class="tour-like">좋아요:${like}</p>
-                                        <a href="#" onclick="likeTour('${title}')" class="card-footer-item has-text-info">
-                                            <span class="icon">
-                                                <i class="fa fa-heart-o"> Like</i>
-                                            </span>
-                                        </a>
+                                        <span class="icon">
+                                            <i class="fa fa-heart-o"></i>
+                                        </span>
+                                        <p class="tour-like">${like}</p>
+                                        <a href="#" onclick="likeTour('${title}')" class="card-footer-item has-text-info"></a>
                                     </footer>
-                                    </div>`
+                                 </div>`
                 $('.card-list').append(temp_html)
             }
         }
