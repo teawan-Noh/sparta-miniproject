@@ -1,20 +1,36 @@
+.big-wrap{
+    margin: 0px 300px;
+}
 
 .header {
     display : flex;
     font-family: 'Pacifico', cursive;
     height: 110px;
+    justify-content: center;
 }
 
-.title {
+.title1 {
+    flex-grow:1;
+}
+.title2 {
+
     width:500px;
     padding : 30px;
     margin: 0 auto;
     text-align: center;
+    flex-grow:2;
+    margin-left: 120px;
+
 }
 .weather {
+
     display: flex;
     margin: 10px;
     float: right;
+    justify-content: flex-end;
+    flex-grow:1;
+    padding-right: 40px;
+
 }
 
 .weather_seoul {
@@ -27,15 +43,15 @@
     margin: 10px
 }
 
-.main-img{
-}
+
 
 .carousel-inner {
-    width: 100%;
+    width: 90%;
     height: 400px;
+    transform:translate(60px, 0px);
 }
 .carousel-item {
-    transform:translate(0px, -200px);
+    transform:translate(0px, -100px);
 }
 .wrap {
     margin: 20px;
@@ -50,7 +66,7 @@
 }
 .filter-left {
     justify-content: flex-start;
-    margin: 0px 0px 0px -10px;
+    margin: 0px 0px 0px -50px;
 }
 .btn-group {
     background-color: yellowgreen;
@@ -58,7 +74,7 @@
 
 .filter-right {
     justify-content: flex-end;
-    margin: 0px 25px 0px 0px;
+    margin: 0px -10px 0px 0px;
 
 }
 .btn-filter {
@@ -82,8 +98,8 @@
 
 
 .card-list{
-    margin: 5px;
-    padding : 10px;
+    margin: 0px;
+    padding : 0px;
     justify-content: space-around;
     display: flex;
     flex-wrap: wrap;
@@ -93,7 +109,7 @@
     width : 300px;
     height : 308px;
 
-    margin : 30px 30px 30px 30px;
+    margin : 10px;
 
 }
 .tour-card-body {
