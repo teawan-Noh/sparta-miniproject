@@ -15,10 +15,8 @@ def home():
 @app.route('/allList', methods=['GET'])
 def list_all():
     all_list = list(db.tour.find({},{'_id':False}))
-    print(all_list)
-    # print('avc')
+
     return jsonify({'all_list':all_list})
-    # return jsonify({'all_list':'avc'})
 
 def like_tour():
     title_receive = request.form['title_give']
