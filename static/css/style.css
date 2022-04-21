@@ -27,21 +27,19 @@
     margin: 10px
 }
 
-.carousel-inner > .carousel-item > img{
-    width: auto;
-    height: auto;
-    max-width: 900px;
-    max-height: 400px;
-    overflow-inline: hidden;
-    display: block;
-    margin: 0px auto;
+.main-img{
 }
 
-
+.carousel-inner {
+    width: 100%;
+    height: 400px;
+}
+.carousel-item {
+    transform:translate(0px, -200px);
+}
 .wrap {
-
-    margin: 30px;
-    padding : 30px;
+    margin: 20px;
+    padding : 10px;
 }
 
 .filter-bar {
