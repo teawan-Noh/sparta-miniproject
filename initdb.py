@@ -8,12 +8,12 @@ url = 'http://www.befreetour.com/'
 client = MongoClient('localhost', 27017)
 db = client.dbsparta
 
-
 def insert_tour():
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
     data = requests.get(url, headers=headers)
     soup = BeautifulSoup(data.text, 'html.parser')
+    print(soup)
 
     tours = soup.select('body > div.container.margin_60 > div:nth-child(5) > div')
     for tour in tours:
@@ -28,6 +28,5 @@ def insert_tour():
                'like': 0}
 
         db.tour.insert_one(doc)
-
 
 insert_tour()
