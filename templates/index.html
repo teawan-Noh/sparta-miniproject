@@ -86,38 +86,6 @@
             })
         }
 
-        function getListByLowPirce() {
-            $('.card-list').empty()
-
-            let sortByLowPrice = list.sort(function (a, b) {
-                return a.price - b.price; // [2, 4, 11, 33] (오름차순)
-            })
-
-            for (let i = 0; i < sortByLowPrice.length; i++) {
-                let title = sortByLowPrice[i]['title']
-                let image = sortByLowPrice[i]['image']
-                let price = sortByLowPrice[i]['price'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-                let like = list[i]['like']
-
-                let temp_html = `<div class="card">
-                                    <img class="card-img-top" src="${image}" alt="Card image cap">
-                                    <div class="tour-card-body">
-                                        <h5 class="tour-title">${title}</h5>
-                                        <p class="tour-price">${price}원</p>
-                                    </div>
-                                    <footer class="card-footer">
-                                          <p class="tour-like">좋아요:${like}</p>
-                                          <a href="#" onclick="likeTour('${title}')" class="card-footer-item has-text-info">
-                                              <span class="icon">
-                                                <i class="fa fa-heart-o"> Like</i>
-                                              </span>
-                                          </a>
-                                    </footer>
-                                 </div>`
-                $('.card-list').append(temp_html)
-            }
-        }
-
         function sortList(key) {
             $('.card-list').empty()
             let keyValue = key
@@ -131,6 +99,8 @@
                 sortedList = list.sort(function (a, b) {
                     return b.price - a.price // (내림차순)
                 })
+            }else{
+                alert('오류코드 처리')
             }
 
             for (let i = 0; i < sortedList.length; i++) {
