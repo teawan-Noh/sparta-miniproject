@@ -8,7 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -23,26 +23,23 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <title>🪂CONNECTED</title>
-<!--    <link href="style.css" rel="stylesheet" type="text/css"/> CSS 파일 분리 시 사용 -->
+    <!--    <link href="style.css" rel="stylesheet" type="text/css"/> CSS 파일 분리 시 사용 -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Pacifico&display=swap" rel="stylesheet">
 
-<!--    <script>-->
-<!--        $('.carousel').carousel({interval: 2000})-->
-<!--    </script>-->
+    <script>
+            $('.carousel').carousel({interval: 2000})
+    </script>
 
     <script>
-        let list = null
         $(document).ready(function () {
-
             getAllList();
         });
 
-
+        let list = null
         let regex = /[^0-9]/g
 
         function getAllList() {
-            console.log('실행')
             $('.card-list').empty()
             $.ajax({
                 type: "GET",
@@ -50,31 +47,72 @@
                 data: {},
                 success: function (response) {
                     list = response['all_list']
-                    console.log(list)
-                    for (let i = 0; i < list.length; i++){
+                    for (let i = 0; i < list.length; i++) {
                         let title = list[i]['title']
                         let image = list[i]['image']
                         let price = list[i]['price']
                         let like = list[i]['like']
 
-                        list[i]['price'] = price.replace(regex,"")
-
-                        // console.log(list[i]['price'])
+                        list[i]['price'] = price.replace(regex, "")
 
                         let temp_html = `<div class="card">
-                                            <img class="card-img-top"
-                                                 src="${image}"
-                                                 alt="Card image cap">
+                                            <img class="card-img-top" src="${image}" alt="Card image cap">
                                             <div class="tour-card-body">
                                                 <h5 class="tour-title">${title}</h5>
-                                                <p class="tour-agency">여행사</p>
                                                 <p class="tour-price">${price}원</p>
                                             </div>
-                                        </div>`
+                                         </div>`
                         $('.card-list').append(temp_html)
                     }
                 }
             })
+        }
+
+        function getListByLowPirce() {
+            $('.card-list').empty()
+
+            let sortByLowPrice = list.sort(function (a, b) {
+                return a.price - b.price; // [2, 4, 11, 33] (오름차순)
+            })
+
+            for (let i = 0; i < sortByLowPrice.length; i++) {
+                let title = sortByLowPrice[i]['title']
+                let image = sortByLowPrice[i]['image']
+                let price = sortByLowPrice[i]['price'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                let like = list[i]['like']
+
+                let temp_html = `<div class="card">
+                                    <img class="card-img-top" src="${image}" alt="Card image cap">
+                                    <div class="tour-card-body">
+                                        <h5 class="tour-title">${title}</h5>
+                                        <p class="tour-price">${price}원</p>
+                                    </div>
+                                 </div>`
+                $('.card-list').append(temp_html)
+            }
+        }
+
+        function getListByHightPirce() {
+            $('.card-list').empty()
+
+            let getListByHightPirce = list.sort(function (a, b) {
+                return b.price - a.price // (내림차순)
+            });
+
+            for (let i = 0; i < getListByHightPirce.length; i++) {
+                let title = getListByHightPirce[i]['title']
+                let image = getListByHightPirce[i]['image']
+                let price = getListByHightPirce[i]['price'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
+                let temp_html = `<div class="card">
+                                    <img class="card-img-top" src="${image}" alt="Card image cap">
+                                    <div class="tour-card-body">
+                                        <h5 class="tour-title">${title}</h5>
+                                        <p class="tour-price">${price}원</p>
+                                    </div>
+                                 </div>`
+                $('.card-list').append(temp_html)
+            }
         }
     </script>
 
@@ -120,6 +158,7 @@
                 }
             })
         });
+
         function likePlace(name) {
             $.ajax({
                 type: 'POST',
@@ -136,125 +175,114 @@
 </head>
 
 <body>
-    <div class="header">
-        <h1 class="title">🪂 CONNECTED</h1>
-        <!-- 날씨 API -->
-        <div class="weather">
-            <div class="weather_seoul">
-                <div class="CurrIcon1"></div>
-                <div class="CurrTemp1"></div>
-                <div class="City1"></div>
-            </div>
-            <div class="weather_tokyo">
-                <div class="CurrIcon2"></div>
-                <div class="CurrTemp2"></div>
-                <div class="City2"></div>
-            </div>
+<div class="header">
+    <h1 class="title">🪂 CONNECTED</h1>
+    <!-- 날씨 API -->
+    <div class="weather">
+        <div class="weather_seoul">
+            <div class="CurrIcon1"></div>
+            <div class="CurrTemp1"></div>
+            <div class="City1"></div>
+        </div>
+        <div class="weather_tokyo">
+            <div class="CurrIcon2"></div>
+            <div class="CurrTemp2"></div>
+            <div class="City2"></div>
         </div>
     </div>
+</div>
 
 
-    <div id="main-img" class="carousel-slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <!-- 슬라이드 쇼 -->
-            <div class="carousel-item active">
-                <!--가로-->
-                <img class="d-block w-100"
-                     src="https://images2.alphacoders.com/592/thumb-1920-592195.jpg"
-                     alt="First slide">
-<!--                <div class="carousel-caption d-none d-md-block">-->
-<!--                    <h5>TEST</h5>-->
-<!--                    <p>testtesttest</p>-->
-<!--                </div>-->
-            </div>
-            <div class="carousel-item">
-                <img class="d-block w-100"
-                     src="https://images.alphacoders.com/674/thumb-1920-674925.png"
-                     alt="Second slide"></div>
-            <div class="carousel-item">
-                <img class="d-block w-100"
-                     src="https://images2.alphacoders.com/546/thumb-1920-546391.jpg"
-                     alt="Third slide">
-            </div>
-            <!-- / 슬라이드 쇼 끝 -->
-            <!-- 인디케이터 -->
-            <ul class="carousel-indicators">
-                <li data-target="#main-img" data-slide-to="0" class="active"></li> <!--0번부터시작-->
-                <li data-target="#main-img" data-slide-to="1"></li>
-                <li data-target="#main-img" data-slide-to="2"></li>
-            </ul> <!-- 인디케이터 끝 --> </div>
-    </div>
+<div id="main-img" class="carousel-slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <!-- 슬라이드 쇼 -->
+        <div class="carousel-item active">
+            <!--가로-->
+            <img class="d-block w-100"
+                 src="https://images2.alphacoders.com/592/thumb-1920-592195.jpg"
+                 alt="First slide">
+            <!--                <div class="carousel-caption d-none d-md-block">-->
+            <!--                    <h5>TEST</h5>-->
+            <!--                    <p>testtesttest</p>-->
+            <!--                </div>-->
+        </div>
+        <div class="carousel-item">
+            <img class="d-block w-100"
+                 src="https://images.alphacoders.com/674/thumb-1920-674925.png"
+                 alt="Second slide"></div>
+        <div class="carousel-item">
+            <img class="d-block w-100"
+                 src="https://images2.alphacoders.com/546/thumb-1920-546391.jpg"
+                 alt="Third slide">
+        </div>
+        <!-- / 슬라이드 쇼 끝 -->
+        <!-- 인디케이터 -->
+        <ul class="carousel-indicators">
+            <li data-target="#main-img" data-slide-to="0" class="active"></li> <!--0번부터시작-->
+            <li data-target="#main-img" data-slide-to="1"></li>
+            <li data-target="#main-img" data-slide-to="2"></li>
+        </ul> <!-- 인디케이터 끝 --> </div>
+</div>
 
 
-    <div class="wrap">
-        <div class="filter-bar">
-            <ul class="filter-left">
+<div class="wrap">
+    <div class="filter-bar">
+        <ul class="filter-left">
 
-
-                <div class="btn-group">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                        여행할 도시 선택
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">파리</a></li>
-                        <li><a class="dropdown-item" href="#">런던</a></li>
-                        <li><a class="dropdown-item" href="#">방콕</a></li>
-                        <li><a class="dropdown-item" href="#">로마</a></li>
-                        <li><a class="dropdown-item" href="#">프라하</a></li>
-                        <li><a class="dropdown-item" href="#">바르셀로나</a></li>
-                        <li><a class="dropdown-item" href="#">뉴욕</a></li>
-                        <li><a class="dropdown-item" href="#">서울</a></li>
-                        <li><a class="dropdown-item" href="#">라스베가스</a></li>
-                        <li><a class="dropdown-item" href="#">마드리드</a></li>
-                        <li><a class="dropdown-item" href="#">멜버른</a></li>
-                        <li><a class="dropdown-item" href="#">로스엔젤레스</a></li>
-                        <li><a class="dropdown-item" href="#">피렌체</a></li>
-                        <li><a class="dropdown-item" href="#">제주도</a></li>
-                        <li><a class="dropdown-item" href="#">하와이</a></li>
-                        <li><a class="dropdown-item" href="#">발리</a></li>
-                        <li><a class="dropdown-item" href="#">비엔나</a></li>
-                        <li><a class="dropdown-item" href="#">부다페스트</a></li>
-                        <li><a class="dropdown-item" href="#">다낭</a></li>
-                        <li><a class="dropdown-item" href="#">베이징</a></li>
-                    </ul>
-                </div>
-
-            </ul>
-            <ul class="filter-right">
-                <ul class="nav justify-content-end">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">좋아요순</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">낮은 가격순</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">높은 가격순</a>
-                    </li>
+            <div class="btn-group">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    여행할 도시 선택
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">파리</a></li>
+                    <li><a class="dropdown-item" href="#">런던</a></li>
+                    <li><a class="dropdown-item" href="#">방콕</a></li>
+                    <li><a class="dropdown-item" href="#">로마</a></li>
+                    <li><a class="dropdown-item" href="#">프라하</a></li>
+                    <li><a class="dropdown-item" href="#">바르셀로나</a></li>
+                    <li><a class="dropdown-item" href="#">뉴욕</a></li>
+                    <li><a class="dropdown-item" href="#">서울</a></li>
+                    <li><a class="dropdown-item" href="#">라스베가스</a></li>
+                    <li><a class="dropdown-item" href="#">마드리드</a></li>
+                    <li><a class="dropdown-item" href="#">멜버른</a></li>
+                    <li><a class="dropdown-item" href="#">로스엔젤레스</a></li>
+                    <li><a class="dropdown-item" href="#">피렌체</a></li>
+                    <li><a class="dropdown-item" href="#">제주도</a></li>
+                    <li><a class="dropdown-item" href="#">하와이</a></li>
+                    <li><a class="dropdown-item" href="#">발리</a></li>
+                    <li><a class="dropdown-item" href="#">비엔나</a></li>
+                    <li><a class="dropdown-item" href="#">부다페스트</a></li>
+                    <li><a class="dropdown-item" href="#">다낭</a></li>
+                    <li><a class="dropdown-item" href="#">베이징</a></li>
                 </ul>
-            </ul>
-        </div>
-        <div class="card-list">
-            <div class="card">
-                <img class="card-img-top"
-                     src="http://image.ajunews.com//content/image/2020/10/18/20201018211753966706.jpg"
-                     alt="Card image cap">
-                <div class="tour-card-body">
-                    <p class="tour-area">카테고리, 여행지</p>
-                    <h5 class="tour-title">투어 이름</h5>
-                    <p class="tour-agency">여행사</p>
-                    <p class="tour-price">가격</p>
-                </div>
             </div>
+
+        </ul>
+        <ul class="filter-right">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <button onclick="getListByLike()">좋아요순</button>
+                </li>
+                <li class="nav-item">
+                    <button onclick="getListByLowPirce()">낮은 가격순</button>
+                </li>
+                <li class="nav-item">
+                    <button onclick="getListByHightPirce()">높은 가격순</button>
+                </li>
+            </ul>
+        </ul>
+    </div>
+    <div class="card-list">
+        <div class="card">
         </div>
     </div>
+</div>
 
-    <div class="footer">
-        <h2>🪂CONNECTED</h2>
-        <p>Code Travelers</p>
-    </div>
-
+<div class="footer">
+    <h2>🪂CONNECTED</h2>
+    <p>Code Travelers</p>
+</div>
 
 
 </body>
