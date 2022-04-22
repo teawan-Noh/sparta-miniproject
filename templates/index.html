@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-      <!-- Optional JavaScript -->
+    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -35,7 +35,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <title>🪂CONNECTED</title>
-    <!--    <link href="style.css" rel="stylesheet" type="text/css"/> CSS 파일 분리 시 사용 -->
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Pacifico&display=swap" rel="stylesheet">
 
@@ -75,7 +75,6 @@
                                                      <i class="fa fa-heart-o"></i>
                                                 </span>
                                                 <p class="tour-like">${like}</p>
-                                                <a href="#" class="card-footer-item has-text-info"></a>
                                             </footer>
                                          </div>`
                         $('.card-list').append(temp_html)
@@ -113,11 +112,10 @@
                                         <p class="tour-price">${price}원</p>
                                     </div>
                                     <footer class="card-footer">
-                                        <span class="icon">
+                                        <span class="icon" onclick="likeTour('${title}')">
                                             <i class="fa fa-heart-o"></i>
                                         </span>
                                         <p class="tour-like">${like}</p>
-                                        <a href="#" onclick="likeTour('${title}')" class="card-footer-item has-text-info"></a>
                                     </footer>
                                  </div>`
                 $('.card-list').append(temp_html)
