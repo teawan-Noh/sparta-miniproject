@@ -68,7 +68,6 @@
                                             <div class="tour-card-body">
                                                 <h5 class="tour-title">${title}</h5>
                                                 <p class="tour-price">${price}원</p>
-
                                             </div>
                                             <footer class="card-footer">
                                                 <span class="icon" onclick="likeTour('${title}')">
@@ -95,8 +94,12 @@
                 sortedList = list.sort(function (a, b) {
                     return b.price - a.price // (내림차순)
                 })
+            }else if(keyValue == 3){
+                sortedList = list.sort(function (a, b) {
+                    return b.like - a.like // (내림차순)
+                })
             }else{
-                alert('오류코드')
+                alert('오류')
             }
 
             for (let i = 0; i < sortedList.length; i++) {
@@ -104,40 +107,6 @@
                 let image = sortedList[i]['image']
                 let price = sortedList[i]['price'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                 let like = sortedList[i]['like']
-
-                let temp_html = `<div class="card">
-                                    <img class="card-img-top" src="${image}" alt="Card image cap">
-                                    <div class="tour-card-body">
-                                        <h5 class="tour-title">${title}</h5>
-                                        <p class="tour-price">${price}원</p>
-                                    </div>
-                                    <footer class="card-footer">
-                                        <span class="icon" onclick="likeTour('${title}')">
-                                            <i class="fa fa-heart-o"></i>
-                                        </span>
-                                        <p class="tour-like">${like}</p>
-                                    </footer>
-                                 </div>`
-                $('.card-list').append(temp_html)
-            }
-        }
-    </script>
-
-    <!-- 좋아요순 정렬 -->
-    <script>
-        function getListByLike(){
-            console.log('실행')
-            $('.card-list').empty()
-
-            let getListByLike = list.sort(function (a, b) {
-                return b.like - a.like
-            })
-
-            for (let i = 0; i < getListByLike.length; i++) {
-                let title = getListByLike[i]['title']
-                let image = getListByLike[i]['image']
-                let price = getListByLike[i]['price'].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-                let like = getListByLike[i]['like']
 
                 let temp_html = `<div class="card">
                                     <img class="card-img-top" src="${image}" alt="Card image cap">
@@ -291,7 +260,7 @@
         <ul class="filter-right">
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <button class="btn-filter" onclick="getListByLike()">좋아요순</button>
+                    <button class="btn-filter" onclick="sortList(3)">좋아요순</button>
                 </li>
                 <li class="nav-item">
                     <button class="btn-filter" onclick="sortList(1)">낮은 가격순</button>
