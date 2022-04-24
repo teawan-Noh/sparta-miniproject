@@ -3,6 +3,8 @@
 ### sparta mini project
 # 🪂 CONNECTED
 
+![image](https://user-images.githubusercontent.com/77611002/164956317-605d0978-2592-4148-8ceb-167ebc438b48.png)
+
 > 고객과 투어 상품 연결 서비스  
 
 <br>
