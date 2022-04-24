@@ -1,11 +1,12 @@
 <img src="https://user-images.githubusercontent.com/77611002/164353749-75c36e2d-66a6-49e5-b114-62d5e6a64b79.png" height="80"/>
 
 ### sparta mini project
-# 🪂 CONNECTED
+# 🪂 CONNECTED  
+> 고객과 투어 상품 연결 서비스  
 
 ![image](https://user-images.githubusercontent.com/77611002/164956317-605d0978-2592-4148-8ceb-167ebc438b48.png)
 
-> 고객과 투어 상품 연결 서비스  
+
 
 <br>
   
