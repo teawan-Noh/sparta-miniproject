@@ -184,6 +184,50 @@
             });
         }
     </script>
+
+    <!-- 검색 기능 -->
+    <script>
+        function search1(){
+            $('.card-list').empty()
+            let value = $('#search-box').val()
+            $.ajax({
+                type: 'GET',
+                url: `/listByTitle?val=${value}`,
+                data: {},
+                success: function (response) {
+                    list = response['searched_list']
+                    for (let i = 0; i < list.length; i++) {
+                        let title = list[i]['title']
+                        let image = list[i]['image']
+                        let price = list[i]['price']
+                        let like = list[i]['like']
+
+                        list[i]['price'] = price.replace(regex, "")
+
+                        let temp_html = `<div class="card">
+                                            <img class="card-img-top" src="${image}" alt="Card image cap">
+                                            <div class="tour-card-body">
+                                                <h5 class="tour-title">${title}</h5>
+                                                <p class="tour-price">${price}원</p>
+                                            </div>
+                                            <footer class="card-footer">
+                                                <span class="icon" onclick="likeTour('${title}')">
+                                                     <i class="fa fa-heart-o"></i>
+                                                </span>
+                                                <p class="tour-like">${like}</p>
+                                            </footer>
+                                         </div>`
+                        $('.card-list').append(temp_html)
+                    }
+                }
+            });
+        }
+    </script>
+    <script>
+        function test(){
+            location.href = 'http://twdomain.shop/'
+        }
+    </script>
 </head>
 
 <body>
@@ -224,6 +268,13 @@
 </div>
 
 <div class="wrap">
+    <div>
+        <button onclick="test()">페이지 이동 테스트</button>
+    </div>
+    <div id="search-wrap" class="input-group mb-3">
+        <input id="search-box" type="text" class="form-control" placeholder="Search">
+        <button class="btn btn-success" type="submit" onclick="search1()">검색</button>
+    </div>
     <div class="filter-bar">
         <ul class="filter-left">
 
